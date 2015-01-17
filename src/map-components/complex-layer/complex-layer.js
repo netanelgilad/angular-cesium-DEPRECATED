@@ -17,9 +17,6 @@ angular.module('angularCesium').directive('complexLayer', function($log) {
           else if (child.tagName === 'LABEL') {
             layer = angular.element('<labels-layer></labels-layer>');
           }
-          else {
-
-          }
 
           if (!layer) {
             $log.warn('Found an unknown child of of complex-layer. Removing...');
