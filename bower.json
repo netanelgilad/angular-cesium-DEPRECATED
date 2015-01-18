@@ -5,7 +5,7 @@
     "Netanel Gilad <netanelgilad@gmail.com>"
   ],
   "description": "Use Cesium in the real angular way!",
-  "main": "dist/angular-cesium.min.js",
+  "main": "dist/angular-cesium.js",
   "keywords": [
     "angular",
     "cesium",
