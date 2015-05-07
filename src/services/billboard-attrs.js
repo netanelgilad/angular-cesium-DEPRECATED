@@ -7,7 +7,7 @@ angular.module('angularCesium').service('BillBoardAttributes', function($parse) 
       image : $parse(attrs.image)(context)
     };
     var positionAttr = $parse(attrs.position)(context);
-    result.position = Cesium.Cartesian3.fromDegrees(Number(positionAttr.latitude) || 0, Number(positionAttr.longitude) || 0, Number(positionAttr.altitude) || 0);
+    result.position = Cesium.Cartesian3.fromDegrees(Number(positionAttr.longitude) || 0, Number(positionAttr.latitude) || 0, Number(positionAttr.altitude) || 0);
 
     var color = $parse(attrs.color)(context);
     if (color) {
