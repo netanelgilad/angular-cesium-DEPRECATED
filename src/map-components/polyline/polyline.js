@@ -19,7 +19,7 @@ angular.module('angularCesium').directive('polyline', function() {
       var positions = scope.positions();
       polylineDesc.positions = [];
       angular.forEach(positions, function(position) {
-        polylineDesc.positions.push(Cesium.Cartesian3.fromDegrees(Number(position.latitude) || 0, Number(position.longitude) || 0, Number(position.altitude) || 0));
+        polylineDesc.positions.push(Cesium.Cartesian3.fromDegrees(Number(position.longitude) || 0, Number(position.latitude) || 0, Number(position.altitude) || 0));
       });
 
       var cesiumColor = Cesium.Color.fromCssColorString('black');

@@ -11,7 +11,7 @@ angular.module('angularCesium').service('BillBoardAttributes', function($parse) 
       image : $parse(attrs.image)(context)
     };
     var positionAttr = $parse(attrs.position)(context);
-    result.position = Cesium.Cartesian3.fromDegrees(Number(positionAttr.latitude) || 0, Number(positionAttr.longitude) || 0, Number(positionAttr.altitude) || 0);
+    result.position = Cesium.Cartesian3.fromDegrees(Number(positionAttr.longitude) || 0, Number(positionAttr.latitude) || 0, Number(positionAttr.altitude) || 0);
 
     var color = $parse(attrs.color)(context);
     if (color) {
@@ -162,7 +162,7 @@ angular.module('angularCesium').directive('label', function() {
       var labelDesc = {};
 
       var position = scope.position();
-      labelDesc.position = Cesium.Cartesian3.fromDegrees(Number(position.latitude) || 0, Number(position.longitude) || 0, Number(position.altitude) || 0);
+      labelDesc.position = Cesium.Cartesian3.fromDegrees(Number(position.longitude) || 0, Number(position.latitude) || 0, Number(position.altitude) || 0);
 
       var color = scope.color();
       if (color) {
@@ -272,7 +272,7 @@ angular.module('angularCesium').directive('polyline', function() {
       var positions = scope.positions();
       polylineDesc.positions = [];
       angular.forEach(positions, function(position) {
-        polylineDesc.positions.push(Cesium.Cartesian3.fromDegrees(Number(position.latitude) || 0, Number(position.longitude) || 0, Number(position.altitude) || 0));
+        polylineDesc.positions.push(Cesium.Cartesian3.fromDegrees(Number(position.longitude) || 0, Number(position.latitude) || 0, Number(position.altitude) || 0));
       });
 
       var cesiumColor = Cesium.Color.fromCssColorString('black');

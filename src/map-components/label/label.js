@@ -14,7 +14,7 @@ angular.module('angularCesium').directive('label', function() {
       var labelDesc = {};
 
       var position = scope.position();
-      labelDesc.position = Cesium.Cartesian3.fromDegrees(Number(position.latitude) || 0, Number(position.longitude) || 0, Number(position.altitude) || 0);
+      labelDesc.position = Cesium.Cartesian3.fromDegrees(Number(position.longitude) || 0, Number(position.latitude) || 0, Number(position.altitude) || 0);
 
       var color = scope.color();
       if (color) {
