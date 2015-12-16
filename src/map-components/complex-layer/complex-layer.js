@@ -1,10 +1,10 @@
 /**
  * Created by netanel on 17/01/15.
  */
-angular.module('angularCesium').directive('complexLayer', function($log) {
+angular.module('angularCesium').directive('acComplexLayer', function($log) {
   return {
     restrict : 'E',
-    require : '^map',
+    require : '^acMap',
     compile : function(element, attrs) {
       if (attrs.observableCollection) {
         angular.forEach(element.children(), function (child) {

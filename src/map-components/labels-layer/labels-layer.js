@@ -1,10 +1,10 @@
 /**
  * Created by netanel on 09/01/15.
  */
-angular.module('angularCesium').directive('labelsLayer', function() {
+angular.module('angularCesium').directive('acLabelsLayer', function() {
   return {
     restrict : 'E',
-    require : '^map',
+    require : '^acMap',
     scope : {},
     controller : function($scope) {
       this.getLabelCollection = function() {
@@ -12,12 +12,12 @@ angular.module('angularCesium').directive('labelsLayer', function() {
       }
     },
     link : {
-      pre: function (scope, element, attrs, mapCtrl) {
+      pre: function (scope, element, attrs, acMapCtrl) {
         scope.collection = new Cesium.LabelCollection();
-        mapCtrl.getCesiumWidget().scene.primitives.add(scope.collection);
+        acMapCtrl.getCesiumWidget().scene.primitives.add(scope.collection);
 
         scope.$on('$destroy', function () {
-          mapCtrl.getCesiumWidget().scene.primitives.remove(scope.collection);
+          acMapCtrl.getCesiumWidget().scene.primitives.remove(scope.collection);
         });
       }
     }
