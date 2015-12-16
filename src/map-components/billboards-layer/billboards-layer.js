@@ -1,10 +1,10 @@
 /**
  * Created by netanel on 09/01/15.
  */
-angular.module('angularCesium').directive('billboardsLayer', function($parse, ObservableCollection, BillBoardAttributes, Cesium) {
+angular.module('angularCesium').directive('acBillboardsLayer', function($parse, ObservableCollection, BillBoardAttributes, Cesium) {
   return {
     restrict : 'E',
-    require : '^map',
+    require : '^acMap',
     controller : function($scope, $attrs) {
       this.getBillboardCollection = function() {
         if ($attrs.observableCollection) {
@@ -15,7 +15,7 @@ angular.module('angularCesium').directive('billboardsLayer', function($parse, Ob
       }
     },
     link : {
-      pre: function (scope, element, attrs, mapCtrl) {
+      pre: function (scope, element, attrs, acMapCtrl) {
         scope.collection = new Cesium.BillboardCollection();
         if (attrs.observableCollection) {
           var COLLECTION_REGEXP = /\s*([\$\w][\$\w]*)\s+in\s+([\$\w][\$\w]*)/;
@@ -47,10 +47,10 @@ angular.module('angularCesium').directive('billboardsLayer', function($parse, Ob
           }
         }
 
-        mapCtrl.getCesiumWidget().scene.primitives.add(scope.collection);
+        acMapCtrl.getCesiumWidget().scene.primitives.add(scope.collection);
 
         scope.$on('$destroy', function () {
-          mapCtrl.getCesiumWidget().scene.primitives.remove(scope.collection);
+          acMapCtrl.getCesiumWidget().scene.primitives.remove(scope.collection);
         });
       }
     }

@@ -1,16 +1,16 @@
 /**
  * Created by gilnis2 on 18/01/15.
  */
-angular.module('angularCesium').directive('polyline', function() {
+angular.module('angularCesium').directive('acPolyline', function() {
   return {
     restrict : 'E',
-    require : '^polylinesLayer',
+    require : '^acPolylinesLayer',
     scope : {
       color : '&',
       width : '&',
       positions : '&'
     },
-    link : function(scope, element, attrs, polylinesLayerCtrl) {
+    link : function(scope, element, attrs, acPolylinesLayerCtrl) {
       var polylineDesc = {};
 
       if (!angular.isDefined(scope.positions) || !angular.isFunction(scope.positions)){
@@ -34,10 +34,10 @@ angular.module('angularCesium').directive('polyline', function() {
         polylineDesc.width = scope.width();
       }
 
-      var polyline = polylinesLayerCtrl.getPolylineCollection().add(polylineDesc);
+      var polyline = acPolylinesLayerCtrl.getPolylineCollection().add(polylineDesc);
 
       scope.$on('$destroy', function() {
-        polylinesLayerCtrl.getPolylineCollection().remove(polyline);
+        acPolylinesLayerCtrl.getPolylineCollection().remove(polyline);
       });
     }
   }

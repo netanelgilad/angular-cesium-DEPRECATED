@@ -1,16 +1,16 @@
 /**
  * Created by netanel on 09/01/15.
  */
-angular.module('angularCesium').directive('label', function() {
+angular.module('angularCesium').directive('acLabel', function() {
   return {
     restrict : 'E',
-    require : '^labelsLayer',
+    require : '^acLabelsLayer',
     scope : {
       color : '&',
       text : '&',
       position : '&'
     },
-    link : function(scope, element, attrs, labelsLayerCtrl) {
+    link : function(scope, element, attrs, acLabelsLayerCtrl) {
       var labelDesc = {};
 
       var position = scope.position();
@@ -23,10 +23,10 @@ angular.module('angularCesium').directive('label', function() {
 
       labelDesc.text = scope.text();
 
-      var label = labelsLayerCtrl.getLabelCollection().add(labelDesc);
+      var label = acLabelsLayerCtrl.getLabelCollection().add(labelDesc);
 
       scope.$on('$destroy', function() {
-        labelsLayerCtrl.getLabelCollection().remove(label);
+        acLabelsLayerCtrl.getLabelCollection().remove(label);
       });
     }
   }

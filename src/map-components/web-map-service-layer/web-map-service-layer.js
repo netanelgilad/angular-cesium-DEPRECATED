@@ -3,26 +3,26 @@
  */
 'use strict';
 
-angular.module('angularCesium').directive('webMapServiceLayer', function() {
+angular.module('angularCesium').directive('acWebMapServiceLayer', function() {
   return {
     restrict : 'E',
-    require : '^map',
+    require : '^acMap',
     scope : {
       url : '&',
       layers : '&'
     },
     controller : function($scope) {
     },
-    link : function(scope, element, attrs, mapCtrl) {
+    link : function(scope, element, attrs, acMapCtrl) {
       var provider = new Cesium.WebMapServiceImageryProvider({
         url: scope.url(),
         layers : scope.layers()
       });
 
-      var layer = mapCtrl.getCesiumWidget().scene.imageryLayers.addImageryProvider(provider);
+      var layer = acMapCtrl.getCesiumWidget().scene.imageryLayers.addImageryProvider(provider);
 
       scope.$on('$destroy', function() {
-        mapCtrl.getCesiumWidget().scene.imageryLayers.remove(layer);
+        acMapCtrl.getCesiumWidget().scene.imageryLayers.remove(layer);
       });
     }
   };

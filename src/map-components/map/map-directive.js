@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('angularCesium').directive('map', function() {
+angular.module('angularCesium').directive('acMap', function() {
   function getSceneMode(dimensions) {
     if (dimensions == 2) {
       return Cesium.SceneMode.SCENE2D;
