@@ -12,15 +12,15 @@ angular.module('myModule', ['angularCesium']);
 </code></pre>
 And start using the map components!
 ```html
-<map>
-  <web-map-service-layer ng-repeat="layer in layers" url="layer.url" layers="layer.layers"></web-map-service-layer>
-      <billboards-layer>
-        <billboard ng-repeat="billboard in billboards"
+<ac-map>
+  <ac-web-map-service-layer ng-repeat="layer in layers" url="layer.url" layers="layer.layers"></ac-web-map-service-layer>
+      <ac-billboards-layer>
+        <ac-billboard ng-repeat="billboard in billboards"
           image="billboard.image"
           color="billboard.color"
-          position="billboard.position"></billboard>
-      </billboards-layer>
-</map>
+          position="billboard.position"></ac-billboard>
+      </ac-billboards-layer>
+</ac-map>
 ```
 
 ## Example Project
