@@ -8,10 +8,10 @@ angular.module('angularCesium').directive('acBillboard', function(BillBoardAttri
     link : function(scope, element, attrs, acBillboardsLayerCtrl) {
       var billDesc = BillBoardAttributes.calcAttributes(attrs, scope);
 
-      var billboard = billboardsLayerCtrl.getBillboardCollection().add(billDesc);
+      var billboard = acBillboardsLayerCtrl.getBillboardCollection().add(billDesc);
 
       scope.$on('$destroy', function() {
-        billboardsLayerCtrl.getBillboardCollection().remove(billboard);
+        acBillboardsLayerCtrl.getBillboardCollection().remove(billboard);
       });
     }
   }
