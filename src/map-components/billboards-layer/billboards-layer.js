@@ -18,7 +18,7 @@ angular.module('angularCesium').directive('acBillboardsLayer', function($parse, 
       pre: function (scope, element, attrs, acMapCtrl) {
         scope.collection = new Cesium.BillboardCollection();
         if (attrs.observableCollection) {
-          var COLLECTION_REGEXP = /\s*([\$\w]+)\s+in\s+([\$\w]*[\.]?[\$\w]+)/;
+          var COLLECTION_REGEXP = /\s*([\$\w]+)\s+in\s+((?:[\$\w]+\.)*[\$\w]+)/;
           var match = attrs.observableCollection.match(COLLECTION_REGEXP);
           var itemName = match[1];
           var collection = $parse(match[2])(scope);
