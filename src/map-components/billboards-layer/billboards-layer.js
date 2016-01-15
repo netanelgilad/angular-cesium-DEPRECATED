@@ -1,5 +1,5 @@
 /**
- * Created by netanel on 09/01/15.
+ * Created by netanel on 09/01/16.
  */
 angular.module('angularCesium').directive('acBillboardsLayer', function($parse, ObservableCollection, BillBoardAttributes, Cesium) {
   return {
