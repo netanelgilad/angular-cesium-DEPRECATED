@@ -20,7 +20,7 @@ angular.module('angularCesium').directive('acTerrainLayer', function() {
       acMapCtrl.setTerrainProvider(provider);
 
       scope.$on('$destroy', function() {
-        acMapCtrl.getCesiumWidget().scene.terrainProvider.remove(layer);
+        acMapCtrl.setTerrainProvider(null);
       });
     }
   };

@@ -38,11 +38,18 @@ angular.module('angularCesium').directive('acMap', function() {
       this.setTerrainProvider = setTerrainProvider;
       function setTerrainProvider(provider) {
         $scope.cesium.destroy();
-        $scope.cesium = new Cesium.CesiumWidget($element.find('div')[0], {
-          sceneMode: getSceneMode($scope.dimensions),
-          imageryProvider: getImageryProviderBoolean($scope.imageryProvider),
-          terrainProvider: provider
-        });
+        if (provider) {
+          $scope.cesium = new Cesium.CesiumWidget($element.find('div')[0], {
+            sceneMode: getSceneMode($scope.dimensions),
+            imageryProvider: getImageryProviderBoolean($scope.imageryProvider),
+            terrainProvider: provider
+          });
+        } else {
+          scope.cesium = new Cesium.CesiumWidget(element.find('div')[0], {
+            sceneMode: getSceneMode(scope.dimensions),
+            imageryProvider: getImageryProviderBoolean(scope.imageryProvider)
+          });
+        }
       }
     },
     link : {
