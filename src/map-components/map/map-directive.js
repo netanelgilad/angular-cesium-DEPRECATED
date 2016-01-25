@@ -16,17 +16,33 @@ angular.module('angularCesium').directive('acMap', function() {
     }
   }
 
-
+  function getImageryProviderBoolean(bool) {
+    if (bool == 'false') {
+      return false
+    } else {
+      return true;
+    }
+  }
   return {
     restrict : 'E',
     template : '<div> <ng-transclude></ng-transclude> <div class="map-container"></div> </div>',
     transclude : true,
     scope : {
-      dimensions : '@'
+      dimensions : '@',
+      imageryProvider : '@'
     },
-    controller : function($scope) {
+    controller : function($scope, $element) {
       this.getCesiumWidget = function() {
         return $scope.cesium;
+      }
+      this.setTerrainProvider = setTerrainProvider;
+      function setTerrainProvider(provider) {
+        $scope.cesium.destroy();
+        $scope.cesium = new Cesium.CesiumWidget($element.find('div')[0], {
+          sceneMode: getSceneMode($scope.dimensions),
+          imageryProvider: getImageryProviderBoolean($scope.imageryProvider),
+          terrainProvider: provider
+        });
       }
     },
     link : {
@@ -36,7 +52,8 @@ angular.module('angularCesium').directive('acMap', function() {
         }
 
         scope.cesium = new Cesium.CesiumWidget(element.find('div')[0], {
-          sceneMode: getSceneMode(scope.dimensions)
+          sceneMode: getSceneMode(scope.dimensions),
+          imageryProvider: getImageryProviderBoolean(scope.imageryProvider)
         });
       }
     }
