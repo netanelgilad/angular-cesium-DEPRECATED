@@ -1,15 +1,16 @@
 /**
  * Created by netanel on 09/01/15.
  */
-'use strict';
 
 angular.module('angularCesium').directive('acWebMapServiceLayer', function() {
+  'use strict';
   return {
     restrict : 'E',
     require : '^acMap',
     scope : {
       url : '&',
-      layers : '&'
+      layers : '&',
+      alpha: '&',
     },
     controller : function($scope) {
     },
@@ -20,6 +21,10 @@ angular.module('angularCesium').directive('acWebMapServiceLayer', function() {
       });
 
       var layer = acMapCtrl.getCesiumWidget().scene.imageryLayers.addImageryProvider(provider);
+
+      if (scope.alpha()) {
+        layer.alpha = scope.alpha();
+      }
 
       scope.$on('$destroy', function() {
         acMapCtrl.getCesiumWidget().scene.imageryLayers.remove(layer);
