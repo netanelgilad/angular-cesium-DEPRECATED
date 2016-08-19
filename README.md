@@ -37,5 +37,7 @@ And start using the map components!
 </ac-map>
 ```
 
-## Example Project
+## Example Project(s)
 https://github.com/netanelgilad/angular-cesium-example
+
+(old) https://github.com/bipol/ac-angular-cesium-example/tree/master/src
